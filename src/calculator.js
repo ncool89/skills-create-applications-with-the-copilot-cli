@@ -32,6 +32,7 @@ function isNumber(n) {
 }
 
 function toNumber(str) {
+  if (typeof str === 'string' && str.trim() === '') return null; // treat empty input as invalid
   const n = Number(str);
   if (!isNumber(n)) return null;
   return n;
@@ -127,3 +128,6 @@ function main() {
 if (require.main === module) {
   main();
 }
+
+// Export functions for testing
+module.exports = { calculate, toNumber, isNumber };
