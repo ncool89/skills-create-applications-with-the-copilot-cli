@@ -91,6 +91,31 @@ async function interactiveMode() {
   }
 }
 
+// New math helper functions
+function modulo(a, b) {
+  if (!isNumber(a) || !isNumber(b)) {
+    throw new Error('Both arguments must be valid numbers');
+  }
+  return a % b;
+}
+
+function power(base, exponent) {
+  if (!isNumber(base) || !isNumber(exponent)) {
+    throw new Error('Both arguments must be valid numbers');
+  }
+  return Math.pow(base, exponent);
+}
+
+function squareRoot(n) {
+  if (!isNumber(n)) {
+    throw new Error('Argument must be a valid number');
+  }
+  if (n < 0) {
+    throw new Error('Cannot compute square root of negative number');
+  }
+  return Math.sqrt(n);
+}
+
 function main() {
   const args = process.argv.slice(2);
   if (args.length === 0) {
@@ -130,4 +155,4 @@ if (require.main === module) {
 }
 
 // Export functions for testing
-module.exports = { calculate, toNumber, isNumber };
+module.exports = { calculate, toNumber, isNumber, modulo, power, squareRoot };
